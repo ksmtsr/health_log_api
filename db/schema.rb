@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_05_123031) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_130541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,7 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_123031) do
 
   create_table "menstruation_logs", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.date "start_date", null: false
+    t.date "start_date"
     t.date "end_date"
     t.integer "cycle_length"
     t.integer "period_length"
