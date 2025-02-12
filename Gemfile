@@ -33,7 +33,10 @@ group :development, :test do
   gem "brakeman", require: false  # セキュリティの静的解析ツール
   gem "rubocop-rails-omakase", require: false  # Rubyスタイルチェックツール
   gem "rspec-rails"  # RSpecテスト用のgem
+  gem "factory_bot_rails" # テストデータ作成用のgem
+  gem 'faker'  # テストデータ作成用のgem
   
   # 認証とデータベース関連
   gem "jwt"  # JSON Web Token（JWT）関連
+  gem 'bcrypt', '~> 3.1.7'  # パスワードのハッシュ化
 end
