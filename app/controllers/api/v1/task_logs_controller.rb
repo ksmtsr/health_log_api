@@ -1,7 +1,7 @@
 class Api::V1::TaskLogsController < ActionController::API
   def index
     @task_logs = TaskLog.all
-    render json: @task_logs
+    render json: @task_logs # シリアライザーでTaskLogに関連するDailyTaskのnameもレスポンスに含まれる。
   end
 
   def show
