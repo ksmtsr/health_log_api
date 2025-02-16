@@ -35,6 +35,7 @@ group :development, :test do
   gem "rspec-rails"  # RSpecテスト用のgem
   gem "factory_bot_rails" # テストデータ作成用のgem
   gem 'faker'  # テストデータ作成用のgem
+  gem 'simplecov', require: false  # テストカバレッジ計測用のgem
   
   # 認証とデータベース関連
   gem "jwt"  # JSON Web Token（JWT）関連
