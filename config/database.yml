@@ -2,20 +2,15 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: <%= ENV.fetch("DB_USERNAME") { "ksmts" } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { "465307" } %>
-  host: localhost
+  username: postgres
+  password: password
+  host: db
 
 development:
   <<: *default
-  database: health_log_development
+  database: health_log_api_development
 
 test:
   <<: *default
   database: health_log_api_test
 
-production:
-  <<: *default
-  database: health_log_production
-  username: health_log
-  password: <%= ENV["HEALTH_LOG_DATABASE_PASSWORD"] %>

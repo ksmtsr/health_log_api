@@ -67,3 +67,26 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
 CMD ["./bin/thrust", "./bin/rails", "server"]
+# ベースイメージ（公式のRuby + Node.js入りのものを使用）
+FROM ruby:3.2.2
+
+# 必要なパッケージをインストール
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# GemfileとGemfile.lockをコピー
+COPY Gemfile* ./
+
+# bundle install を実行（キャッシュを活用するためにこの順番）
+RUN gem install bundler && bundle install
+
+# プロジェクト全体をコピー
+COPY . .
+
+# ポート3000番を開放
+EXPOSE 3000
+
+# サーバーを起動
+CMD ["rails", "server", "-b", "0.0.0.0"]
