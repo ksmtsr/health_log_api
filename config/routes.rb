@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  # Authentication route
-  post 'login', to: 'authentication#login'
-
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
   # API routes with versioning (v1)
   namespace :api do
     namespace :v1 do
-      resources :users
+      # Devise の API 用設定（セッションをスキップ）
+      devise_for :users, controllers: {
+        sessions: 'api/v1/users/sessions'
+      }, skip: :sessions
+
+      # 各リソースのルート
+      resources :users, only: [:index, :show, :update, :destroy]
       resources :weight_logs
       resources :daily_tasks
       resources :health_syncs

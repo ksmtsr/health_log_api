@@ -39,6 +39,8 @@ group :development, :test do
   
   # 認証とデータベース関連
   gem "jwt"  # JSON Web Token（JWT）関連
+  gem 'devise'  # 認証関連
+  gem 'devise-jwt'  # JWTトークンを使った認証
   gem 'bcrypt', '~> 3.1.7'  # パスワードのハッシュ化
   gem 'active_model_serializers'  # シリアライザー
 end
