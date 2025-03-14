@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Railsのバージョンを指定
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 8.0.2"
 
 # データベースとサーバー関連のgem
 gem "pg"
