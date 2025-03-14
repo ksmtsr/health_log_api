@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+        include DeviseTokenAuth::Concerns::SetUserByToken
   # リクエストヘッダーにトークンが含まれているかを確認
   before_action :authorize_request
 

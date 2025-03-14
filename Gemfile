@@ -44,3 +44,7 @@ group :development, :test do
   gem 'bcrypt', '~> 3.1.7'  # パスワードのハッシュ化
   gem 'active_model_serializers'  # シリアライザー
 end
+
+gem "devise_token_auth", "~> 1.2"
+gem 'omniauth', '>= 1.0.0'
+

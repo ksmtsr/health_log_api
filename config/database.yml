@@ -3,14 +3,17 @@ default: &default
   encoding: unicode
   pool: 5
   username: postgres
-  password: password
-  host: db
+  password: '465307'
+  host: health_log_api_development
 
 development:
   <<: *default
   database: health_log_api_development
+  host: db
+  username: postgres
+  password: postgres
+
 
 test:
   <<: *default
   database: health_log_api_test
-
