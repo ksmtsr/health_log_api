@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  # DeviseTokenAuth 用のルート
   mount_devise_token_auth_for 'User', at: 'auth'
+
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 

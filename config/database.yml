@@ -3,16 +3,13 @@ default: &default
   encoding: unicode
   pool: 5
   username: postgres
-  password: '465307'
-  host: health_log_api_development
+  password: password  # PostgreSQL の実際のパスワードに統一
+  host: db     # デフォルトはローカル環境向け
 
 development:
   <<: *default
   database: health_log_api_development
-  host: db
-  username: postgres
-  password: postgres
-
+  host: db  # Docker 内で接続する場合のホスト名
 
 test:
   <<: *default

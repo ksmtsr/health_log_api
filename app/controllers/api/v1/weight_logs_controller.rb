@@ -1,11 +1,13 @@
 class Api::V1::WeightLogsController < ActionController::API
+  before_action :authenticate_user!
+  before_action :set_weight_log, only: [:show, :update, :destroy]
+
   def index
     weight_logs = current_user.weight_logs.order(created_at: :desc)
     render json: weight_logs.map { |log| log_json(log) }
   end
 
   def show
-    @weight_log = WeightLog.find(params[:id])
     render json: @weight_log
   end
 
@@ -20,7 +22,6 @@ class Api::V1::WeightLogsController < ActionController::API
   end
 
   def update
-    @weight_log = WeightLog.find(params[:id])
     if @weight_log.update(weight_log_params)
       render json: @weight_log
     else
@@ -29,18 +30,21 @@ class Api::V1::WeightLogsController < ActionController::API
   end
 
   def destroy
-    @weight_log = WeightLog.find(params[:id])
     @weight_log.destroy
     head :no_content
   end
 
   private
 
+  def log_json(weight_log)
+    weight_log.as_json(only: [:id, :weight, :recorded_at, :note, :weight_diff, :progress_rate])
+  end
+
   def set_weight_log
     @weight_log = current_user.weight_logs.find(params[:id])
   end
 
   def weight_log_params
-    params.require(:weight_log).permit(:user_id, :weight, :recorded_at, :note, :weight_diff, :progress_rate)
+    params.require(:weight_log).permit(:weight, :recorded_at, :note, :weight_diff, :progress_rate)
   end
 end
