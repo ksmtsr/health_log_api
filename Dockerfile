@@ -45,6 +45,8 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+RUN apt-get update && apt-get install -y postgresql-client
+
 
 
 
